@@ -2,8 +2,8 @@ const bcrypt = require("bcryptjs");
 const fs = require("fs");
 const path = require("path");
 
-const DATA_DIR = path.join(__dirname, "data");
-const STORE_PATH = path.join(DATA_DIR, "store.json");
+const DATA_DIR = process.env.DATA_DIR || path.join(__dirname, "data");
+const STORE_PATH = process.env.STORE_PATH || path.join(DATA_DIR, "store.json");
 
 const SEED_ROUTES = [
   { from_city: "Львів", from_country: "Україна", to_city: "Халле", to_country: "Німеччина", price: 110 },
@@ -34,31 +34,57 @@ function loadStore() {
   if (!fs.existsSync(DATA_DIR)) {
     fs.mkdirSync(DATA_DIR, { recursive: true });
   }
-  if (!fs.existsSync(STORE_PATH)) {
-    const store = emptyStore();
+
+  if (fs.existsSync(STORE_PATH)) {
+    const parsed = JSON.parse(fs.readFileSync(STORE_PATH, "utf8"));
+    ensureAdminUser(parsed);
+    return parsed;
+  }
+
+  const bundledStore = path.join(__dirname, "data", "store.json");
+  if (bundledStore !== STORE_PATH && fs.existsSync(bundledStore)) {
+    const parsed = JSON.parse(fs.readFileSync(bundledStore, "utf8"));
+    saveStore(parsed);
+    return parsed;
+  }
+
+  const store = emptyStore();
+  store.users.push({
+    id: 1,
+    username: "admin",
+    password_hash: bcrypt.hashSync("admin123", 10),
+    created_at: nowIso(),
+  });
+  store._counters.users = 1;
+
+  SEED_ROUTES.forEach((route) => {
+    store._counters.routes += 1;
+    store.routes.push({
+      id: store._counters.routes,
+      ...route,
+      active: 1,
+      created_at: nowIso(),
+    });
+  });
+
+  saveStore(store);
+  return store;
+}
+
+function ensureAdminUser(store) {
+  if (!store._counters) {
+    store._counters = { users: 0, routes: 0, applications: 0 };
+  }
+  if (!Array.isArray(store.users)) store.users = [];
+  if (!store.users.some((u) => u.username === "admin")) {
+    store._counters.users += 1;
     store.users.push({
-      id: 1,
+      id: store._counters.users,
       username: "admin",
       password_hash: bcrypt.hashSync("admin123", 10),
       created_at: nowIso(),
     });
-    store._counters.users = 1;
-
-    SEED_ROUTES.forEach((route) => {
-      store._counters.routes += 1;
-      store.routes.push({
-        id: store._counters.routes,
-        ...route,
-        active: 1,
-        created_at: nowIso(),
-      });
-    });
-
-    saveStore(store);
-    return store;
   }
-
-  return JSON.parse(fs.readFileSync(STORE_PATH, "utf8"));
 }
 
 function saveStore(store) {
