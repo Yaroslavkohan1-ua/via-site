@@ -1,0 +1,133 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "username": "admin",
+      "password_hash": "$2a$10$diS6aogSY9c90lv13WbRmeLYYUqpin1ZYg0maS1fEgiAI31ELri1W",
+      "created_at": "2026-08-13T12:15:10.151Z"
+    }
+  ],
+  "routes": [
+    {
+      "id": 1,
+      "from_city": "Львів",
+      "from_country": "Україна",
+      "to_city": "Халле",
+      "to_country": "Німеччина",
+      "price": 110,
+      "active": 1,
+      "created_at": "2026-08-13T12:15:10.153Z"
+    },
+    {
+      "id": 2,
+      "from_city": "Київ",
+      "from_country": "Україна",
+      "to_city": "Фрайбург",
+      "to_country": "Німеччина",
+      "price": 140,
+      "active": 1,
+      "created_at": "2026-08-13T12:15:10.153Z"
+    },
+    {
+      "id": 3,
+      "from_city": "Київ",
+      "from_country": "Україна",
+      "to_city": "Гамбург",
+      "to_country": "Німеччина",
+      "price": 120,
+      "active": 1,
+      "created_at": "2026-08-13T12:15:10.153Z"
+    },
+    {
+      "id": 4,
+      "from_city": "Харків",
+      "from_country": "Україна",
+      "to_city": "Лейпциг",
+      "to_country": "Німеччина",
+      "price": 135,
+      "active": 1,
+      "created_at": "2026-08-13T12:15:10.153Z"
+    },
+    {
+      "id": 5,
+      "from_city": "Харків",
+      "from_country": "Україна",
+      "to_city": "Гіссен",
+      "to_country": "Німеччина",
+      "price": 155,
+      "active": 1,
+      "created_at": "2026-08-13T12:15:10.153Z"
+    },
+    {
+      "id": 6,
+      "from_city": "Львів",
+      "from_country": "Україна",
+      "to_city": "Фрайбург",
+      "to_country": "Німеччина",
+      "price": 130,
+      "active": 1,
+      "created_at": "2026-08-13T12:15:10.153Z"
+    },
+    {
+      "id": 7,
+      "from_city": "Київ",
+      "from_country": "Україна",
+      "to_city": "Оффенбург",
+      "to_country": "Німеччина",
+      "price": 140,
+      "active": 1,
+      "created_at": "2026-08-13T12:15:10.153Z"
+    },
+    {
+      "id": 8,
+      "from_city": "Харків",
+      "from_country": "Україна",
+      "to_city": "Леррах",
+      "to_country": "Німеччина",
+      "price": 160,
+      "active": 1,
+      "created_at": "2026-08-13T12:15:10.153Z"
+    },
+    {
+      "id": 9,
+      "from_city": "Полтава",
+      "from_country": "Україна",
+      "to_city": "Франкфурт",
+      "to_country": "Німеччина",
+      "price": 155,
+      "active": 1,
+      "created_at": "2026-08-13T12:15:10.153Z"
+    },
+    {
+      "id": 10,
+      "from_city": "Рівне",
+      "from_country": "Україна",
+      "to_city": "Франкфурт",
+      "to_country": "Німеччина",
+      "price": 124,
+      "active": 0,
+      "created_at": "2026-08-13T12:33:19.159Z"
+    }
+  ],
+  "applications": [
+    {
+      "id": 1,
+      "route_id": 1,
+      "from_city": "Львів",
+      "to_city": "Халле",
+      "trip_date": "2026-08-14",
+      "passengers": 4,
+      "client_name": "Яраслав яраслов",
+      "client_phone": "+38066867456",
+      "client_email": "emdfdbhjs@gmail.com",
+      "comment": null,
+      "status": "done",
+      "created_at": "2026-08-13T12:34:36.468Z"
+    }
+  ],
+  "_counters": {
+    "users": 1,
+    "routes": 10,
+    "applications": 1
+  }
+}
