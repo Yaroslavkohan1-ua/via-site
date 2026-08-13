@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VIA CRM</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/crm/crm.css">
+</head>
+<body>
+
+<div id="loginScreen" class="login-screen">
+  <form class="login-card" id="loginForm">
+    <div class="login-brand">VIA<span class="dot">•</span> CRM</div>
+    <p class="login-sub">Панель управління маршрутами та заявками</p>
+    <label>
+      <span>Логін</span>
+      <input type="text" id="loginUser" autocomplete="username" required>
+    </label>
+    <label>
+      <span>Пароль</span>
+      <input type="password" id="loginPass" autocomplete="current-password" required>
+    </label>
+    <p class="form-error" id="loginError" hidden></p>
+    <button type="submit" class="btn btn-primary">Увійти</button>
+    <a href="/" class="login-back">← На сайт</a>
+  </form>
+</div>
+
+<div id="appScreen" class="app-screen" hidden>
+  <header class="crm-header">
+    <div class="crm-header-inner">
+      <a href="/crm" class="crm-logo">VIA<span class="dot">•</span> CRM</a>
+      <nav class="crm-tabs">
+        <button type="button" class="crm-tab active" data-tab="routes">Маршрути</button>
+        <button type="button" class="crm-tab" data-tab="applications">
+          Заявки <span class="badge" id="newAppsBadge" hidden>0</span>
+        </button>
+      </nav>
+      <div class="crm-user">
+        <span id="userLabel"></span>
+        <button type="button" class="btn btn-ghost" id="logoutBtn">Вийти</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="crm-main">
+    <section id="tabRoutes" class="crm-panel">
+      <div class="panel-head">
+        <div>
+          <h1>Маршрути</h1>
+          <p>Додавайте рейси — вони з'являться на сайті для пасажирів</p>
+        </div>
+        <button type="button" class="btn btn-primary" id="addRouteBtn">+ Додати маршрут</button>
+      </div>
+
+      <form class="route-form" id="routeForm" hidden>
+        <h2 id="routeFormTitle">Новий маршрут</h2>
+        <input type="hidden" id="routeId">
+        <div class="form-grid">
+          <label>
+            <span>Звідки (місто)</span>
+            <input type="text" id="routeFromCity" required placeholder="Львів">
+          </label>
+          <label>
+            <span>Країна відправлення</span>
+            <input type="text" id="routeFromCountry" value="Україна">
+          </label>
+          <label>
+            <span>Куди (місто)</span>
+            <input type="text" id="routeToCity" required placeholder="Берлін">
+          </label>
+          <label>
+            <span>Країна призначення</span>
+            <input type="text" id="routeToCountry" value="Німеччина">
+          </label>
+          <label>
+            <span>Ціна (€)</span>
+            <input type="number" id="routePrice" min="1" step="1" required placeholder="110">
+          </label>
+          <label class="checkbox-label">
+            <input type="checkbox" id="routeActive" checked>
+            <span>Показувати на сайті</span>
+          </label>
+        </div>
+        <p class="form-error" id="routeFormError" hidden></p>
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary">Зберегти</button>
+          <button type="button" class="btn btn-ghost" id="cancelRouteBtn">Скасувати</button>
+        </div>
+      </form>
+
+      <div class="table-wrap">
+        <table class="crm-table">
+          <thead>
+            <tr>
+              <th>Маршрут</th>
+              <th>Ціна</th>
+              <th>Статус</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="routesTableBody"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="tabApplications" class="crm-panel" hidden>
+      <div class="panel-head">
+        <div>
+          <h1>Заявки від клієнтів</h1>
+          <p>Заявки надходять, коли пасажир натискає «Замовити» або шукає ваш маршрут</p>
+        </div>
+        <select id="statusFilter" class="status-filter">
+          <option value="">Усі статуси</option>
+          <option value="new">Нові</option>
+          <option value="processing">В обробці</option>
+          <option value="done">Виконано</option>
+          <option value="cancelled">Скасовано</option>
+        </select>
+      </div>
+
+      <div class="table-wrap">
+        <table class="crm-table">
+          <thead>
+            <tr>
+              <th>Дата</th>
+              <th>Маршрут</th>
+              <th>Клієнт</th>
+              <th>Поїздка</th>
+              <th>Статус</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="appsTableBody"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+</div>
+
+<script src="/crm/crm.js"></script>
+</body>
+</html>
