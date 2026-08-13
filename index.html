@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VIA — Автобусні квитки в Європу онлайн</title>
+<meta name="description" content="Квитки на автобус з України в Європу: Польща, Німеччина, Франція, Італія. Онлайн-бронювання, вибір місця, електронний квиток.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a href="/" class="logo">VIA<span class="logo-dot">•</span></a>
+    <nav class="main-nav" id="mainNav">
+      <a href="#routes">Маршрути</a>
+      <a href="#why">Чому ми</a>
+      <a href="#faq">Питання</a>
+      <a href="#contacts">Контакти</a>
+    </nav>
+    <a href="tel:+380689074800" class="phone">+380 68 907 48 00</a>
+    <button class="burger" id="burgerBtn" aria-label="Меню" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main>
+
+  <section class="hero">
+    <div class="wrap">
+      <p class="eyebrow">Квитки онлайн · без пересадок · від дверей до дверей</p>
+
+      <div class="hero-route" aria-hidden="true">
+        <span class="hero-city" id="heroCityFrom">LVIV</span>
+        <span class="route-line">
+          <span class="route-dot start"></span>
+          <span class="route-track"></span>
+          <span class="route-bus" id="heroBus">🚌</span>
+          <span class="route-dot end"></span>
+        </span>
+        <span class="hero-city" id="heroCityTo">PARIS</span>
+      </div>
+
+      <div class="hero-banners" aria-label="Акції та пропозиції">
+        <div class="hero-banner hero-banner-promo">
+          <h2 class="banner-promo-title">Вікові знижки</h2>
+          <ul class="banner-promo-list">
+            <li><span class="banner-badge">−50%</span> дітям до 4 років</li>
+            <li><span class="banner-badge">−30%</span> дітям 4–12 років</li>
+            <li><span class="banner-badge">−10%</span> молоді 12–26 років</li>
+            <li><span class="banner-badge">−10%</span> людям від 60 років</li>
+          </ul>
+        </div>
+        <div class="hero-banner hero-banner-photo">
+          <img src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=1200&q=80" alt="Комфортний автобус VIA на міжнародному маршруті" loading="eager">
+        </div>
+      </div>
+
+      <h1 class="hero-title">Ваш квиток до Європи —<br>оформіть за дві хвилини</h1>
+
+      <!-- Ticket search card -->
+      <form class="ticket-card" id="searchForm">
+        <div class="ticket-perf ticket-perf-left" aria-hidden="true"></div>
+        <div class="ticket-perf ticket-perf-right" aria-hidden="true"></div>
+
+        <div class="ticket-row ticket-row-main">
+          <div class="field field-from">
+            <label for="fromInput">Звідки</label>
+            <input type="text" id="fromInput" autocomplete="off" value="Львів" placeholder="Місто відправлення">
+            <ul class="suggest" id="fromSuggest" hidden></ul>
+          </div>
+
+          <button type="button" class="swap-btn" id="swapBtn" aria-label="Поміняти міста місцями">⇄</button>
+
+          <div class="field field-to">
+            <label for="toInput">Куди</label>
+            <input type="text" id="toInput" autocomplete="off" value="Париж" placeholder="Місто призначення">
+            <ul class="suggest" id="toSuggest" hidden></ul>
+          </div>
+        </div>
+
+        <div class="ticket-tear" aria-hidden="true"></div>
+
+        <div class="ticket-row ticket-row-sub">
+          <div class="field field-date">
+            <label for="dateInput">Дата поїздки</label>
+            <input type="date" id="dateInput">
+          </div>
+
+          <div class="field field-pax">
+            <label for="paxInput">Пасажири</label>
+            <select id="paxInput">
+              <option value="1">1 пасажир</option>
+              <option value="2">2 пасажири</option>
+              <option value="3">3 пасажири</option>
+              <option value="4">4 пасажири</option>
+            </select>
+          </div>
+
+          <button type="submit" class="search-btn">
+            Знайти квитки <span class="arrow">→</span>
+          </button>
+        </div>
+      </form>
+
+    </div>
+  </section>
+
+  <section class="stats" id="stats">
+    <div class="wrap">
+      <div class="stats-grid">
+        <div class="stat-card">
+          <span class="stat-icon">🚌</span>
+          <span class="stat-num">24+</span>
+          <span class="stat-label">років досвіду</span>
+          <p class="stat-text">Працюємо з 2001 року та щодня вдосконалюємо сервіс для комфортних і безпечних подорожей.</p>
+        </div>
+        <div class="stat-card">
+          <span class="stat-icon">🧑‍🤝‍🧑</span>
+          <span class="stat-num">499 805+</span>
+          <span class="stat-label">пасажирів</span>
+          <p class="stat-text">Ми подбали про комфорт і безпеку кожного, хто довірив нам свою поїздку.</p>
+        </div>
+        <div class="stat-card">
+          <span class="stat-icon">🌍</span>
+          <span class="stat-num">14</span>
+          <span class="stat-label">країн Європи</span>
+          <p class="stat-text">Допомагаємо дістатися до Німеччини, Польщі, Іспанії, Італії, Чехії та інших країн Європи.</p>
+        </div>
+        <div class="stat-card">
+          <span class="stat-icon">🛣️</span>
+          <span class="stat-num">18 156 000+</span>
+          <span class="stat-label">км</span>
+          <p class="stat-text">Загалом стільки кілометрів проїхали з вами наші автобуси.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="geo" id="geo">
+    <div class="wrap">
+      <div class="geo-head">
+        <div>
+          <h2 class="section-title">Географія наших рейсів</h2>
+          <p class="section-sub">🌐 Широкий вибір рейсів до Європи</p>
+        </div>
+        <p class="geo-text">VIA надає послуги з бронювання квитків на регулярні міжнародні рейси до Німеччини, Іспанії, Італії, Польщі та інших країн Європи. Ми пропонуємо зручні варіанти поїздок з різним графіком, що дозволяє обрати оптимальний час відправлення та прибуття.</p>
+      </div>
+
+      <div class="geo-grid">
+        <a href="#routes" class="geo-card" data-from="Львів" data-to="Берлін">
+          <img src="images/country-germany.jpg" alt="Німеччина" loading="lazy">
+          <span class="geo-tag">🇩🇪 Німеччина</span>
+        </a>
+        <a href="#routes" class="geo-card" data-from="Львів" data-to="Прага">
+          <img src="images/country-czech.jpg" alt="Чехія" loading="lazy">
+          <span class="geo-tag">🇨🇿 Чехія</span>
+        </a>
+        <a href="#routes" class="geo-card" data-from="Одеса" data-to="Мілан">
+          <img src="images/country-italy.jpg" alt="Італія" loading="lazy">
+          <span class="geo-tag">🇮🇹 Італія</span>
+        </a>
+        <a href="#routes" class="geo-card" data-from="Львів" data-to="Мадрид">
+          <img src="images/country-spain.jpg" alt="Іспанія" loading="lazy">
+          <span class="geo-tag">🇪🇸 Іспанія</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="routes" id="routes">
+    <div class="wrap">
+      <h2 class="section-title">Популярні напрямки</h2>
+      <p class="section-sub">Найчастіше бронюють цього тижня</p>
+
+      <div class="route-grid" id="routeGrid">
+        <p class="route-loading">Завантаження маршрутів…</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="why" id="why">
+    <div class="why-bg" aria-hidden="true"></div>
+    <div class="wrap why-wrap">
+      <h2 class="section-title light why-title">Чому обирають VIA</h2>
+      <div class="why-grid">
+        <div class="why-item">
+          <span class="why-icon">🔥</span>
+          <h3>Найкращі ціни</h3>
+          <p>Раннє бронювання, бонуси для постійних клієнтів і сезонні акції — платите менше за той самий комфорт.</p>
+        </div>
+        <div class="why-item">
+          <span class="why-icon">🗺️</span>
+          <h3>Розгалужена мережа маршрутів</h3>
+          <p>Десятки напрямків по всій Європі — обирайте зручний рейс саме туди, куди вам потрібно.</p>
+        </div>
+        <div class="why-item">
+          <span class="why-icon">🏆</span>
+          <h3>Понад 24 роки в дорозі</h3>
+          <p>Один із найдосвідченіших міжнародних перевізників України — надійність, перевірена часом.</p>
+        </div>
+        <div class="why-item">
+          <span class="why-icon">🚌</span>
+          <h3>Комфорт для кожного пасажира</h3>
+          <p>Кліматконтроль, USB-зарядка та біотуалет на борту — зручно навіть у найдовшій поїздці.</p>
+        </div>
+        <div class="why-item">
+          <span class="why-icon">📶</span>
+          <h3>Стабільний інтернет у дорозі</h3>
+          <p>Безкоштовний Wi-Fi на кожному сидінні — працюйте, дивіться фільм або будьте на зв'язку.</p>
+        </div>
+        <div class="why-item">
+          <span class="why-icon">⚡</span>
+          <h3>Бронювання за пару хвилин</h3>
+          <p>Оформіть квиток онлайн і миттєво отримайте підтвердження та QR-код на пошту.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="faq" id="faq">
+    <div class="wrap">
+      <h2 class="section-title">Питання, що часто ставлять</h2>
+      <div class="faq-list">
+
+        <details class="faq-item">
+          <summary>Коли отримаю квиток після оплати?</summary>
+          <p>Електронний квиток з QR-кодом надходить на вашу пошту одразу після успішної оплати. Він також з'являється в особистому кабінеті.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>Чи можна змінити дату поїздки?</summary>
+          <p>Так, перенесення дати можливе безкоштовно не пізніше ніж за 24 години до відправлення рейсу через особистий кабінет або службу підтримки.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>Скільки багажу можна взяти з собою?</summary>
+          <p>Стандартно — одна валіза до 20 кг у багажному відсіку та одна ручна поклажа. Додаткові місця можна долучити під час оформлення.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>Чи потрібно друкувати квиток?</summary>
+          <p>Ні. Достатньо показати водію QR-код з телефону — паперова версія не обов'язкова.</p>
+        </details>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer" id="contacts">
+  <div class="wrap footer-inner">
+    <div class="footer-col">
+      <a href="/" class="logo">VIA<span class="logo-dot">•</span></a>
+      <p>Автобусні перевезення між Україною та Європою.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Компанія</h4>
+      <a href="#">Про нас</a>
+      <a href="#">Вакансії</a>
+      <a href="#">Партнерам</a>
+    </div>
+    <div class="footer-col">
+      <h4>Підтримка</h4>
+      <a href="#faq">Питання</a>
+      <a href="#">Умови перевезення</a>
+      <a href="#">Повернення квитка</a>
+    </div>
+    <div class="footer-col">
+      <h4>Контакти</h4>
+      <a href="tel:+380689074800">+380 68 907 48 00</a>
+      <a href="mailto:info@via-bus.ua">info@via-bus.ua</a>
+    </div>
+  </div>
+  <div class="wrap footer-bottom">
+    <span>© 2026 VIA. Усі права захищено.</span>
+  </div>
+</footer>
+
+<div class="modal-overlay" id="appModal" hidden>
+  <div class="modal" role="dialog" aria-labelledby="modalTitle" aria-modal="true">
+    <button type="button" class="modal-close" id="modalClose" aria-label="Закрити">×</button>
+    <h2 class="modal-title" id="modalTitle">Замовити квиток</h2>
+    <p class="modal-route" id="modalRoute"></p>
+    <form id="applicationForm">
+      <input type="hidden" id="appRouteId">
+      <input type="hidden" id="appFromCity">
+      <input type="hidden" id="appToCity">
+      <div class="modal-grid">
+        <label>
+          <span>Ім'я та прізвище *</span>
+          <input type="text" id="appName" required placeholder="Іван Петренко">
+        </label>
+        <label>
+          <span>Телефон *</span>
+          <input type="tel" id="appPhone" required placeholder="+380 XX XXX XX XX">
+        </label>
+        <label>
+          <span>Email</span>
+          <input type="email" id="appEmail" placeholder="email@example.com">
+        </label>
+        <label>
+          <span>Дата поїздки</span>
+          <input type="date" id="appDate">
+        </label>
+        <label>
+          <span>Пасажирів</span>
+          <select id="appPax">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+          </select>
+        </label>
+        <label class="modal-full">
+          <span>Коментар</span>
+          <textarea id="appComment" rows="2" placeholder="Додаткові побажання"></textarea>
+        </label>
+      </div>
+      <p class="modal-error" id="appError" hidden></p>
+      <p class="modal-success" id="appSuccess" hidden></p>
+      <button type="submit" class="search-btn modal-submit">Надіслати заявку <span class="arrow">→</span></button>
+    </form>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
